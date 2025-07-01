@@ -40,7 +40,10 @@ DeviceFileEvents
 
 // Detect suspicious PowerShell with encoded command
 DeviceProcessEvents
-| where ProcessCommandLine contains "-enc"
+| where DeviceName == "nessa-windows"
+| where ProcessCommandLine has "-enc"
+| project Timestamp, DeviceName, ActionType, FileName, FolderPath, ProcessCommandLine, AccountName, AccountDomain
+| order by Timestamp desc
 
 // Detect PowerShell making outbound network request
 DeviceNetworkEvents
