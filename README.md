@@ -47,6 +47,7 @@ DeviceProcessEvents
 
 // Detect PowerShell making outbound network request
 DeviceNetworkEvents
+| where DeviceName == "nessa-windows"
 | where InitiatingProcessFileName =~ "powershell.exe"
 | project Timestamp, DeviceName, InitiatingProcessAccountName, RemoteIP, RemotePort, RemoteUrl
 | order by Timestamp desc
