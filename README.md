@@ -34,9 +34,11 @@
 
 ## Related Queries:
 ```kql
-// Detect the fake update download
+// Detect the fake update download 
 DeviceFileEvents
 | where FileName contains "chrome_update_fake"
+| order by Timestamp desc
+| project Timestamp, DeviceName, ActionType, FileName, FileOriginUrl, FileOriginReferrerUrl, InitiatingProcessRemoteSessionIP
 
 // Detect suspicious PowerShell with encoded command
 DeviceProcessEvents
